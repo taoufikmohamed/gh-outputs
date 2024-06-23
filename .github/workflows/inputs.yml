@@ -1,0 +1,21 @@
+on:
+  workflow_call:
+    inputs:
+      environment:
+        description: 'A env passed from the caller workflow'
+        default: 'DEV'
+        required: true
+        type: choice
+        options:
+            - DEV
+            - QA
+            - PRD
+        
+
+jobs:
+  print-username:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Print the input name to STDOUT
+        run: echo The envoronment  ${{ github.event.inputs.environment. }}
